@@ -13,6 +13,7 @@ class sbt {
 
   package {'sbt':
     ensure  => present,
+    source  => '/etc/yum.repos.d/bintray-sbt-rpm.repo',
     require => Exec['download_sbt']
   }
 }
