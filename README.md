@@ -17,7 +17,7 @@
 
 This is a puppet module for installing the sbt (scala build tool) from the sbt officialy provided repo on cent-os like os family.
 
-The module includes tests to verify the installation.
+The module includes tests to verify the installation. It is written to be used by [simulators VM](https://github.com/saksdirect/HBCSimulators)
 
 ## Module Description
 
