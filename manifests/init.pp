@@ -1,19 +1,23 @@
-# == Class: sbt
+# == Class: sbt-ubuntu
 #
 # Installs Scala Build Tools
-#
-# === Parameters
-#
 
-class sbt {
-  exec {'download_sbt':
-    command => '/usr/bin/curl https://bintray.com/sbt/rpm/rpm | sudo tee /etc/yum.repos.d/bintray-sbt-rpm.repo',
-    creates => '/etc/yum.repos.d/bintray-sbt-rpm.repo'
+class sbt-ubuntu {
+  exec { 'set-repo':
+    command => 'echo "deb http://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list',
+    path    => '/usr/bin/:/bin/',
+    before  => Exec['update']
   }
-
-  package {'sbt':
-    ensure  => present,
-    source  => '/etc/yum.repos.d/bintray-sbt-rpm.repo',
-    require => Exec['download_sbt']
+  
+  exec { 'update':
+    command => 'sudo apt-get update',
+    path    => '/usr/bin/:/bin/',
+    before  => Exec['install-sbt']
+  }
+  
+  exec { 'install-sbt':
+    environment => ["DEBIAN_FRONTEND=noninteractive"],
+    command     => 'sudo apt-get -y --force-yes install sbt',
+    path        => '/usr/bin/:/bin/'
   }
 }
