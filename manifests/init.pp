@@ -1,8 +1,8 @@
-# == Class: sbt-ubuntu
+# == Class: sbtubuntu
 #
 # Installs Scala Build Tools
 
-class sbt-ubuntu {
+class sbtubuntu {
   exec { 'set-repo':
     command => 'echo "deb http://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list',
     path    => '/usr/bin/:/bin/',

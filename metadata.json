@@ -1,7 +1,7 @@
 {
-  "name": "hbcd-sbt-ubuntu",
+  "name": "hbcd-sbtubuntu",
   "version": "0.1.0",
-  "author": "hbcd",
+  "author": "dspeele",
   "summary": null,
   "license": "Apache 2.0",
   "source": "",
